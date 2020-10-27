@@ -1,0 +1,3 @@
+nohup: ignoring input
+../gaussian_fluctuations.py:54: RuntimeWarning: invalid value encountered in true_divide
+  return lmax2500CL[:len(ls), 2] *2*np.pi/(ls*(ls+1))

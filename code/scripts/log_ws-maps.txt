@@ -1,0 +1,5 @@
+nohup: ignoring input
+../cosmic_string.py:114: RuntimeWarning: divide by zero encountered in double_scalars
+  signal = np.array([2*self.polarization_signal/depth]*depth)
+../gaussian_fluctuations.py:54: RuntimeWarning: invalid value encountered in true_divide
+  return lmax2500CL[:len(ls), 2] *2*np.pi/(ls*(ls+1))
