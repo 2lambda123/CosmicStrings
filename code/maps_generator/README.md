@@ -1,0 +1,3 @@
+This folder contains Jade Ducharme's code, which has the purpose of generating sky maps with a cosmic string signal. Her code is documented in the **Complete_Summary_Maps_Generator.pdf** file located in the **doc** folder.
+
+Moreover, a **Intro_usage** jupyter notebook is added to show how one can use her code to generate maps. Note that in the **script** folder, there are python scripts that can be executed to obtain the maps with or without cosmic string signal.

@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../')
+sys.path.append('../maps_generator/')
 from gaussian_fluctuations import generate_gaussian
 from array import array
 import numpy as np

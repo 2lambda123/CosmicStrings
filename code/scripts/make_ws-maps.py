@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../')
+sys.path.append('../maps_generator/')
 from scaling_solution_signal import generate_signal
 from gaussian_fluctuations import generate_gaussian
 from array import array
@@ -17,7 +17,7 @@ def main():
     for i in range(N):
         signal_map = mult_factor*generate_signal()
         gaussian_map = generate_gaussian()
-        filename = "ws-map"+str(i)+".npy"
+        filename = "ws-map"+str(i)+"_mult"+str(mult_factor)+".npy"
         
         with open(path+filename, 'wb') as f:
         	np.save(f, signal_map+gaussian_map)
