@@ -98,9 +98,6 @@ def generate_gaussian():
     # Finally, we just want the real part:
 
     position_map_real = position_map_coldel.real
-
-
-    position_map_real.shape # As expected, we now have 400x400 
     
     return position_map_real
 
