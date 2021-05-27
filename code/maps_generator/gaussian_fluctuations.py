@@ -5,7 +5,7 @@ import copy
 #constants
 Nmax = 401
 kmax = Nmax/2
-L = 10
+L = 10 #degrees ; and thus the resolution is Nmax/L (really its Nmax-1)
 
 
 def get_kmap():
