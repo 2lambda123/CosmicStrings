@@ -29,7 +29,7 @@ def get_Cls():
     results = camb.get_results(pars)
 
     #get dictionary of CAMB power spectra
-    powers =results.get_cmb_power_spectra(pars) 
+    powers = results.get_cmb_power_spectra(pars, CMB_unit='muK') 
 
     # lensed_scalar corresponds to the B modes
 
@@ -41,7 +41,7 @@ def get_Cls():
 
     pars.set_for_lmax(11000, lens_potential_accuracy=1)
     results = camb.get_results(pars)
-    lmax2500CL = results.get_lensed_scalar_cls(raw_cl=True) ## THIS is the array of interest for us 
+    lmax2500CL = results.get_lensed_scalar_cls(raw_cl=True, CMB_unit='muK') ## THIS is the array of interest for us 
     
     return lmax2500CL[:len(ls), 1]  
     
