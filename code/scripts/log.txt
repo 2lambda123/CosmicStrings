@@ -1,7 +1,0 @@
-nohup: ignoring input
-Traceback (most recent call last):
-  File "make_ns-maps.py", line 3, in <module>
-    from gaussian_fluctuations import generate_gaussian
-  File "../gaussian_fluctuations.py", line 1, in <module>
-    import numpy as np
-ModuleNotFoundError: No module named 'numpy'
