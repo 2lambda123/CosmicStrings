@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.utils import shuffle
 
 
-def load_data(n, amplitude=1, dataset='dataset_1'):
+def load_data(n, amplitude=1):
     '''
     returns the maps with and without cosmic string signal with appropriate labels (index matching).
     
@@ -17,8 +17,8 @@ def load_data(n, amplitude=1, dataset='dataset_1'):
     '''
     
     #setup path variables
-    path_ns = "../data/" + dataset + "/ns-maps/"
-    path_ws = "../data/" + dataset + "/ws-maps/"
+    path_ns = "../data/ns-maps/"
+    path_ws = "../data/ws-maps/"
     
     #fetch the data
     arr_ns = np.array([np.load(path_ns + "ns-map{}.npy".format(i)) for i in range(n)])[:,:,:,np.newaxis] #no signal maps (y=0)
