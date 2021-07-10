@@ -35,4 +35,7 @@ def load_data(n, amplitude=1):
     X = np.concatenate((arr_ns, arr_ws), axis=0)
     
     #we return a shuffled version of the data
+    
     return shuffle(X, y, random_state=0)
+    
+
