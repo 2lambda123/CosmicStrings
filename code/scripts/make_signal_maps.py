@@ -10,7 +10,7 @@ import os
 
 path = r"../../data/ws-maps/signal/" 
 
-M = 199-194 #number of maps to be made.
+M = 50 #number of maps to be made.
 N = 3 #number related to wakes
 string_tension = 10**(-7)
 

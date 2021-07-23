@@ -44,7 +44,7 @@ for i, string_tension in enumerate(x) :
         model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['acc'])
 
         #fit the model
-        history = model.fit(X[train], y[train], epochs=10, batch_size=25)
+        history = model.fit(X[train], y[train], epochs=10, batch_size=25, verbose=0)
 
         #evaluate the model
         scores = model.evaluate(X[train], y[train])
@@ -55,7 +55,11 @@ for i, string_tension in enumerate(x) :
         acc_per_fold_test.append(scores[1] * 100)
         loss_per_fold_test.append(scores[0])
 
-        df.loc[i] = [x, acc_per_fold_train, acc_per_fold_test, loss_per_fold_train, loss_per_fold_test]
+        df.loc[i] =  [string_tension, 
+                     (np.mean(acc_per_fold_train), np.std(acc_per_fold_train)),
+                     (np.mean(acc_per_fold_test), np.std(acc_per_fold_test)),
+                     (np.mean(loss_per_fold_train), np.std(loss_per_fold_train)),
+                     (np.mean(loss_per_fold_test), np.std(loss_per_fold_test))]
         
         
 df.to_csv('./acc_loss_vs_tension.csv')

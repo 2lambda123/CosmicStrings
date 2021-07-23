@@ -11,7 +11,7 @@ import os
 path_ns_maps = r"../../data/ns-maps/" #The no-signal maps
 path_ws_maps_noise = r"../../data/ws-maps/noise/" #The noise part of the with-signal maps
 
-M = 100 #number of maps to be made.
+M = 50 #number of maps to be made.
 
 def max_file_num(path):
     files = os.listdir(path)
