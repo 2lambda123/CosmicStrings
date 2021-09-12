@@ -1,8 +1,8 @@
 import numpy as np
 from sklearn.utils import shuffle
+from tensorflow import keras
 
-
-def load_data(n, amplitude=1):
+def load_data(n, amplitude=1, bmode=False):
     '''
     returns the maps with and without cosmic string signal with appropriate labels (index matching).
     
@@ -17,13 +17,22 @@ def load_data(n, amplitude=1):
     '''
     
     #setup path variables
-    path_ns = "../data/ns-maps/"
+    if bmode:
+        path_ns = "../data/ns-maps(bmode)/"
+    else:
+        path_ns = "../data/ns-maps/"
+
     path_ws = "../data/ws-maps/"
-    
+        
     #fetch the data
     arr_ns = np.array([np.load(path_ns + "ns-map{}.npy".format(i)) for i in range(n)])[:,:,:,np.newaxis] #no signal maps (y=0)
     
-    arr_ws = np.array([amplitude*np.load(path_ws + "signal/signal{}.npy".format(i)) + 
+    if bmode:
+        arr_ws = np.array([amplitude*np.load(path_ws + "signal/signal{}.npy".format(i)) + 
+                       np.load(path_ws + "noise(bmode)/noise{}.npy".format(i)) 
+                       for i in range(n)])[:,:,:,np.newaxis]
+    else:
+        arr_ws = np.array([amplitude*np.load(path_ws + "signal/signal{}.npy".format(i)) + 
                        np.load(path_ws + "noise/noise{}.npy".format(i)) 
                        for i in range(n)])[:,:,:,np.newaxis]
 
@@ -39,19 +48,31 @@ def load_data(n, amplitude=1):
     return shuffle(X, y, random_state=0)
     
 
-def load_data_diff_str_tension(train_tension = 10**(-7)):
+def load_data_diff_str_tension(train_tension = 10**(-7), bmode=False):
     
     
-    X_train, y_train = load_data(100, amplitude=train_tension/(10**(-7)))
-    path_ns = "../data/ns-maps/"
+    X_train, y_train = load_data(100, amplitude=train_tension/(10**(-7)), bmode=bmode)
+    
+    if bmode:
+        path_ns = "../data/ns-maps(bmode)/"
+    else:
+        path_ns = "../data/ns-maps/"
+    
     path_ws = "../data/ws-maps/"
     dic_X = {}
     dic_y = {}
     for lower_index, string_tension in zip(np.arange(100, 400, 25), np.linspace(10**(-8), 2.5*10**(-7), 12)):
 
         amplitude = string_tension/10**(-7)
+        
         arr_ns = np.array([np.load(path_ns + "ns-map{}.npy".format(i)) for i in range(lower_index, lower_index+25)])[:,:,:,np.newaxis] 
-        arr_ws = np.array([amplitude*np.load(path_ws + "signal/signal{}.npy".format(i)) + 
+        
+        if bmode:
+            arr_ws = np.array([amplitude*np.load(path_ws + "signal/signal{}.npy".format(i)) + 
+                           np.load(path_ws + "noise(bmode)/noise{}.npy".format(i)) 
+                           for i in range(lower_index, lower_index+25)])[:,:,:,np.newaxis]
+        else:
+            arr_ws = np.array([amplitude*np.load(path_ws + "signal/signal{}.npy".format(i)) + 
                            np.load(path_ws + "noise/noise{}.npy".format(i)) 
                            for i in range(lower_index, lower_index+25)])[:,:,:,np.newaxis]
         
@@ -67,3 +88,25 @@ def load_data_diff_str_tension(train_tension = 10**(-7)):
     dic_y['train'] = y_train
    
     return dic_X, dic_y
+
+
+def get_model(input_shape):
+    
+    model = keras.models.Sequential()
+
+    model.add(keras.layers.Conv2D(32, (3, 3), activation='tanh', input_shape=input_shape))
+    model.add(keras.layers.AveragePooling2D((3, 3)))
+
+    model.add(keras.layers.Conv2D(16, (3, 3), activation='tanh'))
+    model.add(keras.layers.AveragePooling2D((2, 2)))
+
+    model.add(keras.layers.Conv2D(8, (3, 3), activation='tanh'))
+    model.add(keras.layers.AveragePooling2D((2, 2)))
+
+    model.add(keras.layers.Flatten())
+    model.add(keras.layers.Dense(1, activation='sigmoid', kernel_regularizer=keras.regularizers.l2(l=0.05)))
+
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['acc'])
+    
+    model.summary()
+    return model

@@ -17,7 +17,7 @@ def get_kmap():
 def get_lmap():
     return np.round((360/(2*np.pi))*get_kmap())
 
-def get_Cls():
+def get_Cls(bmode=False):
     #Set up a new set of parameters for CAMB
     pars = camb.CAMBparams()
     #This function sets up CosmoMC-like settings, with one massive neutrino and helium set using BBN consistency
@@ -43,12 +43,15 @@ def get_Cls():
     results = camb.get_results(pars)
     lmax2500CL = results.get_lensed_scalar_cls(raw_cl=True, CMB_unit='muK') ## THIS is the array of interest for us 
     
-    return lmax2500CL[:len(ls), 1]  
+    if bmode:
+        return lmax2500CL[:len(ls), 2]
+    else:
+        return lmax2500CL[:len(ls), 1]  
     
     
     
-def get_Cls_map():
-    Cls = get_Cls()
+def get_Cls_map(bmode=False):
+    Cls = get_Cls(bmode)
     Cls_map = np.zeros((Nmax, Nmax))
     ls = np.arange(11001)
     l_map = get_lmap()
@@ -68,9 +71,9 @@ def get_Cls_map():
     return Cls_map
 
 
-def generate_gaussian():
+def generate_gaussian(bmode=False):
     fourier_map = np.zeros((Nmax, Nmax), dtype='complex')
-    Cl_map = get_Cls_map()
+    Cl_map = get_Cls_map(bmode)
     
     for i in range(0, Nmax):
         for j in range(0, Nmax):
