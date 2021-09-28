@@ -1,0 +1,9 @@
+#Jupyter notebook
+code/.ipynb_checkpoints
+code/__pycache__
+code/maps_generator/__pycache__
+code/maps_generator/.ipynb_checkpoints
+#data - especially maps
+data
+code/scripts/output/ns-maps
+code/scripts/output/ws-maps

@@ -90,7 +90,7 @@ def load_data_diff_str_tension(train_tension = 10**(-7), bmode=False):
     return dic_X, dic_y
 
 
-def get_model(input_shape):
+def get_model(input_shape, show_summary=False):
     
     model = keras.models.Sequential()
 
@@ -108,5 +108,6 @@ def get_model(input_shape):
 
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['acc'])
     
-    model.summary()
+    if show_summary:
+        model.summary()
     return model
