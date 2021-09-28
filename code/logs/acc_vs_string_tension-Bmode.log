@@ -1,0 +1,31 @@
+nohup: ignoring input
+2021-09-28 07:21:32.455923: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2021-09-28 07:23:39.584252: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-09-28 07:23:39.586503: W tensorflow/stream_executor/platform/default/dso_loader.cc:60] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2021-09-28 07:23:39.586550: W tensorflow/stream_executor/cuda/cuda_driver.cc:326] failed call to cuInit: UNKNOWN ERROR (303)
+2021-09-28 07:23:39.586593: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (r8l1-gustaf.stat.ubc.ca): /proc/driver/nvidia/version does not exist
+2021-09-28 07:23:39.587125: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-09-28 07:23:39.587563: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-09-28 07:23:41.616132: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2021-09-28 07:23:42.330289: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 2699995000 Hz
+2021-09-28 07:23:44.491586: W tensorflow/core/framework/cpu_allocator_impl.cc:80] Allocation of 1013785600 exceeds 10% of free system memory.
+2021-09-28 07:23:46.832258: W tensorflow/core/framework/cpu_allocator_impl.cc:80] Allocation of 1013785600 exceeds 10% of free system memory.
+2021-09-28 07:23:48.035474: W tensorflow/core/framework/cpu_allocator_impl.cc:80] Allocation of 1013785600 exceeds 10% of free system memory.
+2021-09-28 07:23:49.268380: W tensorflow/core/framework/cpu_allocator_impl.cc:80] Allocation of 1013785600 exceeds 10% of free system memory.
+2021-09-28 07:23:50.180679: W tensorflow/core/framework/cpu_allocator_impl.cc:80] Allocation of 1013785600 exceeds 10% of free system memory.
+/zfs/users/william.laplante/william.laplante/opt/anaconda3/envs/tf-gpu/lib/python3.9/site-packages/numpy/core/_asarray.py:102: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  return array(a, dtype, copy=False, order=order)
+[1.0000000000000004e-06, (100.0, 0.0), (100.0, 0.0), (0.018957541137933732, 0.0016893253436888144), (0.019516710937023164, 0.0023324863507206747)]
+[5.994842503189417e-07, (100.0, 0.0), (100.0, 0.0), (0.02558630481362343, 0.0016094117106341906), (0.02708427906036377, 0.004304354726742867)]
+[3.5938136638046265e-07, (100.0, 0.0), (100.0, 0.0), (0.0321494422852993, 0.00859677599748521), (0.033086127042770384, 0.008363540319897722)]
+[2.1544346900318843e-07, (100.0, 0.0), (100.0, 0.0), (0.0482484757900238, 0.00942424334961164), (0.04954845309257507, 0.007849435352696697)]
+[1.2915496650148827e-07, (99.96875047683716, 0.062499046325683594), (100.0, 0.0), (0.0724036417901516, 0.02237312588294676), (0.07390953898429871, 0.023554204683092647)]
+[7.742636826811268e-08, (97.46874928474426, 4.058171196126441), (98.24999928474426, 2.663410397814506), (0.21381807029247285, 0.05531801318272912), (0.20971037745475768, 0.04940976623826978)]
+[4.64158883361278e-08, (79.0625, 23.78513035590361), (78.87500047683716, 23.66563996138606), (0.4498533964157104, 0.15330508149477468), (0.4535343170166016, 0.15106252737230091)]
+[2.7825594022071167e-08, (56.34374976158142, 9.222508952391756), (56.12500071525574, 9.20597681506485), (0.6720671057701111, 0.019531161244866115), (0.675961172580719, 0.023866128699052296)]
+[1.668100537200055e-08, (51.968750953674316, 1.3535259461115532), (51.37499928474426, 1.0000000894071337), (0.690781569480896, 0.0025361848108815437), (0.6929440379142762, 0.001853022123372856)]
+[9.999999999999982e-09, (50.40624976158142, 0.40262841829868057), (50.00000059604645, 0.39528527298103133), (0.6937532067298889, 0.0010636299656120501), (0.6940602540969849, 0.0012071617653975908)]
+[4.6415888336127745e-09, (49.96875047683716, 0.24999991059369897), (49.62499976158142, 0.7500004768371582), (0.6932854771614074, 0.00021809628471166018), (0.6933241486549377, 0.00021270677586152512)]
+[2.1544346900318837e-09, (50.03124952316284, 0.062499046325683594), (50.0, 0.0), (0.6932978391647339, 0.00010267524274638825), (0.6933031558990479, 0.00010150480534597129)]
+[1.0000000000000007e-09, (50.0, 0.0), (50.0, 0.0), (0.6931933522224426, 4.2244576587329704e-05), (0.6931936621665955, 4.249792613915881e-05)]

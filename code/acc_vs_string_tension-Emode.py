@@ -18,7 +18,7 @@ def main():
     for i, string_tension in enumerate(x) :
 
 
-        X,y = load_data(400, amplitude= string_tension/(10**(-7)), bmode=True)
+        X,y = load_data(400, amplitude= string_tension/(10**(-7)), bmode=False)
 
 
         skfold = StratifiedKFold(n_splits=5)
@@ -59,7 +59,7 @@ def main():
 
 
 
-    df.to_csv('./results/acc_vs_string_tension-Bmode(results).csv')
+    df.to_csv('./results/acc_vs_string_tension-Emode(results).csv')
 
 
 
