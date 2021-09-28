@@ -45,21 +45,21 @@ def main():
             acc_per_fold_test.append(scores[1] * 100)
             loss_per_fold_test.append(scores[0])
 
-            df.loc[i] =  [string_tension, 
-                         (np.mean(acc_per_fold_train), np.std(acc_per_fold_train)),
-                         (np.mean(acc_per_fold_test), np.std(acc_per_fold_test)),
-                         (np.mean(loss_per_fold_train), np.std(loss_per_fold_train)),
-                         (np.mean(loss_per_fold_test), np.std(loss_per_fold_test))]
+        df.loc[i] =  [string_tension, 
+                     (np.mean(acc_per_fold_train), np.std(acc_per_fold_train)),
+                     (np.mean(acc_per_fold_test), np.std(acc_per_fold_test)),
+                     (np.mean(loss_per_fold_train), np.std(loss_per_fold_train)),
+                     (np.mean(loss_per_fold_test), np.std(loss_per_fold_test))]
 
-            print([string_tension, 
-                         (np.mean(acc_per_fold_train), np.std(acc_per_fold_train)),
-                         (np.mean(acc_per_fold_test), np.std(acc_per_fold_test)),
-                         (np.mean(loss_per_fold_train), np.std(loss_per_fold_train)),
-                         (np.mean(loss_per_fold_test), np.std(loss_per_fold_test))])
+        print([string_tension, 
+                     (np.mean(acc_per_fold_train), np.std(acc_per_fold_train)),
+                     (np.mean(acc_per_fold_test), np.std(acc_per_fold_test)),
+                     (np.mean(loss_per_fold_train), np.std(loss_per_fold_train)),
+                     (np.mean(loss_per_fold_test), np.std(loss_per_fold_test))])
 
 
 
-    df.to_csv('./output/acc_vs_string_tension-Bmode(results).csv')
+    df.to_csv('./results/acc_vs_string_tension-Bmode(results).csv')
 
 
 
